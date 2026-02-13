@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PlayCode India | RPSG</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Google+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #1a73e8 0%, #34a853 100%);
+            --primary-blue: #1a73e8;
+            --primary-green: #34a853;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --surface-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border-light: #334155;
+            --shadow-large: 0 10px 25px -5px rgba(0,0,0,0.3);
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --radius-xl: 16px;
+            --radius-full: 9999px;
+            --font-primary: 'Inter', sans-serif;
+            --font-display: 'Google Sans', var(--font-primary);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background Animation - Exactly like previous */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(26, 115, 232, 0.08) 0%, rgba(26, 115, 232, 0) 70%);
+            animation: float 20s infinite linear;
+            filter: blur(100px);
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 1200px;
+            height: 1200px;
+            top: 10%;
+            left: 5%;
+            animation-duration: 25s;
+            background: radial-gradient(circle, rgba(52, 168, 83, 0.06) 0%, rgba(52, 168, 83, 0) 70%);
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 900px;
+            height: 900px;
+            top: 60%;
+            right: 10%;
+            animation-duration: 20s;
+            animation-direction: reverse;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.05) 0%, rgba(138, 43, 226, 0) 70%);
+        }
+
+        .grid-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(26, 115, 232, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26, 115, 232, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, 150px) rotate(90deg); }
+            50% { transform: translate(0, 300px) rotate(180deg); }
+            75% { transform: translate(-100px, 150px) rotate(270deg); }
+        }
+
+        /* Header - Exactly like previous */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-light);
+        }
+
+        .rpsg-logo {
+            height: 32px;
+            width: auto;
+            filter: brightness(0) saturate(100%) invert(89%) sepia(8%) saturate(1533%) hue-rotate(177deg) brightness(105%) contrast(98%);
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin-top: 80px;
+        }
+
+        /* Welcome Badge - Exactly like previous */
+        .welcome-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-large);
+        }
+
+        /* Title */
+        .main-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .main-title h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .main-title p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Services Grid - Exactly like previous */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .service-card {
+            background: var(--surface-card);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-large);
+            border: 1px solid var(--border-light);
+            transition: all 0.25s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.25s ease;
+            transform-origin: left;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.4);
+            border-color: var(--primary-blue);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: auto;
+        }
+
+        /* Footer - Exactly like previous */
+        .main-footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        .footer-bottom {
+            color: var(--text-tertiary);
+            font-size: 0.75rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-title h1 {
+                font-size: 2.2rem;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+            
+            .header-content {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation - Exactly like previous -->
+    <div class="background-animation">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="grid-pattern"></div>
+    </div>
+
+    <!-- Header - Exactly like previous -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="brand-logo">
+                <div class="logo-badge">
+                    <img src="https://i.ibb.co/DPNCP8SJ/RP-Sanjiv-Goenka-Group-logo.webp" alt="RPSG" class="rpsg-logo">
+                    <span class="logo-text">PlayCode</span>
+                </div>
+                <span style="font-size: 0.875rem; color: var(--text-secondary);">India</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Welcome Badge -->
+        <div style="text-align: center;">
+            <div class="welcome-badge">
+                <span class="material-icons-round" style="font-size: 16px;">verified</span>
+                Google & RPSG Merger Product
+            </div>
+        </div>
+
+        <!-- Title -->
+        <div class="main-title">
+            <h1>
+                Premium Google Play Services<br>
+                <span class="gradient-text">by RPSG Playcode India</span>
+            </h1>
+            <p>Access premium services through our secure Playcode portal</p>
+        </div>
+
+        <!-- Two Options Grid - Exactly like previous UI style -->
+        <div class="services-grid">
+            <!-- Option 1: Playcode Account - Same tab -->
+            <a href="https://playcodeagent-bit.github.io/Balance/" class="service-card" target="_self">
+                <div class="card-icon">
+                    <span class="material-icons-round">account_balance_wallet</span>
+                </div>
+                <h2 class="card-title">Playcode Account</h2>
+                <p class="card-description">
+                    Check your balance instantly, manage gift codes, and access premium Google Play services with RPSG secure system.
+                </p>
+                <span class="card-cta">
+                    Access Account
+                    <span class="material-icons-round" style="font-size: 16px;">arrow_forward</span>
+                </span>
+            </a>
+
+            <!-- Option 2: Get Loan - Same tab -->
+            <a href="https://playcodeagent-bit.github.io/Loans/" class="service-card" target="_self">
+                <div class="card-icon">
+                    <span class="material-icons-round">account_balance</span>
+                </div>
+                <h2 class="card-title">Get Loan</h2>
+                <p class="card-description">
+                    Instant personal loans, easy approval process, minimal documentation, and flexible repayment options for Playcode users.
+                </p>
+                <span class="card-cta">
+                    Apply Now
+                    <span class="material-icons-round" style="font-size: 16px;">arrow_forward</span>
+                </span>
+            </a>
+        </div>
+
+        <!-- Footer - Exactly like previous -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <p>© 2026 RPSG Ventures - PlayCode India Official. All rights reserved.</p>
+                <p style="margin-top: 0.5rem;">Google Play is a trademark of Google LLC.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript to ensure same tab -->
+    <script>
+        // Force all links to open in same tab
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href]').forEach(link => {
+                link.setAttribute('target', '_self');
+            });
+        });
+    </script>
+</body>
+</html>
