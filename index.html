@@ -27,6 +27,11 @@
             --radius-full: 9999px;
             --font-primary: 'Inter', sans-serif;
             --font-display: 'Google Sans', var(--font-primary);
+            
+            /* exclusive gold */
+            --gold-gradient: linear-gradient(145deg, #FFD700 0%, #FDB931 35%, #FFE55C 70%, #FFD700 100%);
+            --gold-glow: 0 0 20px rgba(255, 215, 0, 0.6), 0 10px 30px -5px rgba(255, 215, 0, 0.3);
+            --gold-border: #FFD700;
         }
 
         * {
@@ -158,7 +163,7 @@
 
         /* Main Container */
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             width: 100%;
             margin-top: 80px;
         }
@@ -206,10 +211,10 @@
             background-clip: text;
         }
 
-        /* Services Grid - Exactly like previous */
+        /* Services Grid - three columns now */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             padding: 1rem;
         }
@@ -253,6 +258,60 @@
             transform: scaleX(1);
         }
 
+        /* GOLD CARD exclusive */
+        .service-card.gold-card {
+            background: linear-gradient(145deg, #2a2416, #1f1a0e);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            box-shadow: var(--gold-glow);
+            border-color: #FDB931;
+        }
+
+        .service-card.gold-card::before {
+            background: var(--gold-gradient);
+            height: 6px;
+            transform: scaleX(1);
+            opacity: 0.8;
+        }
+
+        .service-card.gold-card .card-icon {
+            background: rgba(255,215,0,0.15);
+            color: #FFD700;
+            text-shadow: 0 0 8px #FFD700;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+
+        .service-card.gold-card .card-title {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .service-card.gold-card .card-cta {
+            color: #FFD700;
+            font-weight: 700;
+            gap: 0.75rem;
+        }
+
+        .gold-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--gold-gradient);
+            color: #1a1500;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 15px gold;
+            text-transform: uppercase;
+            border: 1px solid #fff3b0;
+        }
+
         .card-icon {
             width: 70px;
             height: 70px;
@@ -280,6 +339,9 @@
             margin-bottom: 1.5rem;
             flex-grow: 1;
         }
+        .gold-card .card-description {
+            color: #f5e7c8;
+        }
 
         .card-cta {
             display: inline-flex;
@@ -300,26 +362,193 @@
         }
 
         .footer-bottom {
-            color: var(--text-tertiary);
+            color: #94a3b8;
             font-size: 0.75rem;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* ===== ATTRACTIVE GOLD POPUP (SMALLER + SCROLL) ===== */
+        .popup-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: opacity 0.3s ease;
+            padding: 1rem;
+        }
+
+        .popup-card {
+            max-width: 420px;        /* smaller size */
+            width: 100%;
+            max-height: 85vh;         /* limits height on small screens */
+            background: radial-gradient(circle at top left, #2f2818, #141007);
+            border-radius: 40px 40px 30px 30px;
+            box-shadow: 0 30px 50px rgba(255,215,0,0.5), 0 0 0 3px #FFD700 inset, 0 0 30px #FFD700;
+            border: 1px solid #f5c542;
+            color: #fff2cf;
+            animation: goldRise 0.5s ease-out;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;          /* ensures border radius */
+        }
+
+        @keyframes goldRise {
+            0% { opacity: 0; transform: scale(0.7) rotate(-2deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0); }
+        }
+
+        /* scrollable content area */
+        .popup-scroll-area {
+            overflow-y: auto;
+            padding: 2rem 1.8rem 1rem 1.8rem;
+            scrollbar-width: thin;
+            scrollbar-color: #FFD700 #2f2a1f;
+        }
+        .popup-scroll-area::-webkit-scrollbar {
+            width: 5px;
+        }
+        .popup-scroll-area::-webkit-scrollbar-track {
+            background: #2f2a1f;
+            border-radius: 20px;
+        }
+        .popup-scroll-area::-webkit-scrollbar-thumb {
+            background: #FFD700;
+            border-radius: 20px;
+            box-shadow: inset 0 0 6px #b8860b;
+        }
+
+        .popup-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 0.5rem;
+        }
+        .popup-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFEFA0, #FFD700, #FDB431);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        .popup-header .material-icons-round {
+            font-size: 2.5rem;
+            color: #FFD700;
+            filter: drop-shadow(0 0 8px gold);
+        }
+
+        .gold-chip {
+            background: #FFD700;
+            color: #1f1800;
+            font-weight: 800;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            display: inline-block;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 20px #FFD700;
+            margin: 0.5rem 0 1rem 0;
+            border: 1px solid #fff0b5;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin: 1rem 0 1.5rem;
+        }
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.98rem;
+            background: rgba(255,215,0,0.05);
+            padding: 8px 12px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,215,0,0.2);
+            transition: transform 0.15s;
+        }
+        .benefits-list li:hover {
+            transform: translateX(6px);
+            background: rgba(255,215,0,0.15);
+            border-color: #FFD700;
+        }
+        .benefits-list .material-icons-round {
+            color: #FFD700;
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 5px gold);
+        }
+
+        .popup-footer-note {
+            font-size: 0.75rem;
+            color: #e1c97c;
+            margin: 1rem 0 0.5rem;
+            text-align: center;
+            border-top: 1px dashed #FFD700;
+            padding-top: 0.8rem;
+        }
+
+        .popup-actions {
+            display: flex;
+            gap: 0.8rem;
+            padding: 0 1.8rem 2rem 1.8rem;
+            background: transparent;
+        }
+        .popup-btn {
+            flex: 1;
+            padding: 1rem 0.5rem;
+            border-radius: 60px;
+            font-weight: 800;
+            border: none;
+            background: var(--gold-gradient);
+            color: #1f1a00;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 0 20px gold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid #fff2b5;
+        }
+        .popup-btn-secondary {
+            background: transparent;
+            color: #FFD700;
+            box-shadow: 0 0 0 2px #FFD700 inset;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
+        }
+        .popup-btn:hover {
+            transform: scale(1.03);
+            filter: brightness(1.2);
+            box-shadow: 0 0 30px gold;
+        }
+
+        /* responsive adjustments */
+        @media (max-width: 500px) {
+            .popup-card {
+                max-width: 95%;
+            }
+            .popup-header h2 {
+                font-size: 1.9rem;
+            }
+        }
+        @media (max-width: 1000px) {
+            .services-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+        @media (max-width: 700px) {
             .services-grid {
                 grid-template-columns: 1fr;
             }
-            
             .main-title h1 {
                 font-size: 2.2rem;
-            }
-            
-            .card-title {
-                font-size: 1.5rem;
-            }
-            
-            .header-content {
-                padding: 0 1rem;
             }
         }
     </style>
@@ -364,9 +593,9 @@
             <p>Access premium services through our secure Playcode portal</p>
         </div>
 
-        <!-- Two Options Grid - Exactly like previous UI style -->
+        <!-- Three Options Grid -->
         <div class="services-grid">
-            <!-- Option 1: Playcode Account - Same tab -->
+            <!-- Option 1: Playcode Account -->
             <a href="https://playcodeindia.github.io/Balance/" class="service-card" target="_self">
                 <div class="card-icon">
                     <span class="material-icons-round">account_balance_wallet</span>
@@ -381,7 +610,7 @@
                 </span>
             </a>
 
-            <!-- Option 2: Get Loan - Same tab -->
+            <!-- Option 2: Get Loan -->
             <a href="https://playcodeindia.github.io/Loans/" class="service-card" target="_self">
                 <div class="card-icon">
                     <span class="material-icons-round">account_balance</span>
@@ -395,6 +624,23 @@
                     <span class="material-icons-round" style="font-size: 16px;">arrow_forward</span>
                 </span>
             </a>
+
+            <!-- Option 3: Playcode Pro (GOLD) - HIGHLIGHTED -->
+            <a href="https://playcodeindia.github.io/Playcodegold/" class="service-card gold-card" target="_self" id="proGoldLink">
+                <div class="gold-badge">✨ GOLD EDITION ✨</div>
+                <div class="card-icon">
+                    <span class="material-icons-round">workspace_premium</span>
+                </div>
+                <h2 class="card-title">Playcode Pro</h2>
+                <p class="card-description">
+                    <span style="display:block; font-weight:700; margin-bottom:6px;">🔓 Free till 8 Apr 2026 · then ₹149/month</span>
+                    Rewards every month, 20% discount, 40% off first 3 purchases, chat, early offers, 25% off on 1000+, LSG win gift, redeem insurance.
+                </p>
+                <span class="card-cta">
+                    Upgrade to Gold
+                    <span class="material-icons-round" style="font-size: 18px;">star</span>
+                </span>
+            </a>
         </div>
 
         <!-- Footer - Exactly like previous -->
@@ -406,14 +652,93 @@
         </footer>
     </div>
 
-    <!-- JavaScript to ensure same tab -->
+    <!-- 🟡 GOLDEN POPUP - SMALLER + SCROLL + MORE ATTRACTIVE -->
+    <div id="goldPopup" class="popup-overlay">
+        <div class="popup-card">
+            <!-- scrollable container -->
+            <div class="popup-scroll-area">
+                <div class="popup-header">
+                    <span class="material-icons-round">auto_awesome</span>
+                    <h2>Playcode Pro</h2>
+                    <span class="material-icons-round">workspace_premium</span>
+                </div>
+                <div style="text-align: center;">
+                    <span class="gold-chip">✨ GOLDEN EDITION ✨</span>
+                </div>
+                <div class="popup-free" style="background: #ca9e1e; color:#1c1700; padding:0.5rem; border-radius:40px; font-weight:800; text-align:center; font-size:1.2rem; margin:10px 0; box-shadow:0 0 20px gold;">
+                    🎁 FREE TILL 8 APRIL 2026
+                </div>
+                <div style="font-weight:600; text-align:center; margin:10px 0 5px; background: rgba(0,0,0,0.4); padding:5px; border-radius:40px;">
+                    then ₹149/month — cancel anytime
+                </div>
+
+                <ul class="benefits-list">
+                    <li><span class="material-icons-round">card_giftcard</span> Rewards every month (min. ₹160)</li>
+                    <li><span class="material-icons-round">trending_up</span> Discount 16% → 20%</li>
+                    <li><span class="material-icons-round">local_offer</span> 40% off first 3 purchases (up to ₹100)</li>
+                    <li><span class="material-icons-round">forum</span> Chat with friends</li>
+                    <li><span class="material-icons-round">update</span> Early access to all offers</li>
+                    <li><span class="material-icons-round">percent</span> 25% off on purchase of ₹1000+</li>
+                    <li><span class="material-icons-round">celebration</span> Free gift on LSG win (IPL 2026)</li>
+                    <li><span class="material-icons-round">security</span> Redeem code insurance (₹1000 cover)*</li>
+                </ul>
+                <div class="popup-footer-note">
+                    *Insurance up to ₹1000, contact support for extension.
+                </div>
+            </div>
+            <!-- fixed buttons outside scroll for better UX -->
+            <div class="popup-actions">
+                <button class="popup-btn" id="grabDealBtn">
+                    <span class="material-icons-round">local_offer</span> GRAB GOLD
+                </button>
+                <button class="popup-btn popup-btn-secondary" id="remindLaterBtn">
+                    <span class="material-icons-round">schedule</span> LATER
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Force all links to open in same tab
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('a[href]').forEach(link => {
-                link.setAttribute('target', '_self');
+        (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                // same tab for all links
+                document.querySelectorAll('a[href]').forEach(link => {
+                    link.setAttribute('target', '_self');
+                });
+
+                // Popup elements
+                const popup = document.getElementById('goldPopup');
+                const grabBtn = document.getElementById('grabDealBtn');
+                const laterBtn = document.getElementById('remindLaterBtn');
+                const goldLink = document.getElementById('proGoldLink');
+
+                // Grab → go to pro page and close popup
+                grabBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.location.href = 'https://playcodeindia.github.io/Playcodegold/';
+                    popup.style.opacity = '0';
+                    setTimeout(() => { popup.style.display = 'none'; }, 200);
+                });
+
+                // Later → close popup
+                laterBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    popup.style.opacity = '0';
+                    setTimeout(() => { popup.style.display = 'none'; }, 200);
+                });
+
+                // Click outside popup-card closes popup (but not if scrolling inside)
+                popup.addEventListener('click', function(e) {
+                    if (e.target === popup) {
+                        popup.style.opacity = '0';
+                        setTimeout(() => { popup.style.display = 'none'; }, 200);
+                    }
+                });
+
+                // Ensure popup visible (it is visible by default)
             });
-        });
+        })();
     </script>
 </body>
 </html>
