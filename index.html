@@ -4,12 +4,11 @@
     <link rel="icon" sizes="32x32" href="logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="PlayCode India by RPSG — Premium Google Play Services, Loans, and Playcode Pro Gold Edition. Secure, seamless, professional.">
+    <meta name="description" content="PlayCode India by RPSG — Premium Google Play Services">
     <title>PlayCode India | RPSG — Premium Digital Nexus</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Google+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=Google+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ---------- RESET & GLOBAL ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -20,49 +19,38 @@
             --primary-blue: #1a73e8;
             --primary-green: #34a853;
             --gold-primary: #FFD700;
-            --gold-deep: #FDB931;
-            --gold-radiant: #FFE55C;
             --bg-deep-space: #020617;
-            --bg-elevated: #0f172f;
-            --surface-lux: rgba(15, 23, 42, 0.65);
-            --glass-border: rgba(255, 215, 0, 0.2);
             --text-starlight: #F1F5F9;
             --text-stardust: #CBD5E1;
-            --text-nebula: #94A3B8;
             --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            --shadow-gold: 0 0 30px rgba(255, 215, 0, 0.3);
             --ease-spring: cubic-bezier(0.34, 1.2, 0.64, 1);
-            --ease-smooth: cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            --duration-slow: 0.7s;
         }
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 100px;
         }
 
         body {
-            font-family: 'Inter', 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', 'Google Sans', sans-serif;
             background: radial-gradient(ellipse at 20% 30%, #0a0f2a, #010007);
             color: var(--text-starlight);
             min-height: 100vh;
             overflow-x: hidden;
-            line-height: 1.5;
         }
 
-        /* ---------- CINEMATIC BACKGROUND ---------- */
+        /* Background Effects */
         .cosmic-backdrop {
             position: fixed;
             inset: 0;
             z-index: -20;
             overflow: hidden;
         }
-        .nebula-1, .nebula-2, .nebula-3, .nebula-4 {
+        .nebula-1, .nebula-2 {
             position: absolute;
             border-radius: 50%;
             filter: blur(140px);
             opacity: 0.35;
-            animation: cosmicDrift 32s infinite alternate ease-in-out;
+            animation: cosmicDrift 32s infinite alternate;
         }
         .nebula-1 {
             width: 90vmax;
@@ -81,43 +69,20 @@
             opacity: 0.18;
             animation-duration: 45s;
         }
-        .nebula-3 {
-            width: 70vmax;
-            height: 70vmax;
-            background: radial-gradient(circle, #8b5cf6, #3b82f6);
-            top: 40%;
-            left: 60%;
-            opacity: 0.12;
-            animation-duration: 38s;
-            animation-direction: alternate-reverse;
-        }
-        .nebula-4 {
-            width: 60vmax;
-            height: 60vmax;
-            background: radial-gradient(circle, #ec489a, #f97316);
-            top: 70%;
-            left: -10%;
-            opacity: 0.08;
-            animation-duration: 50s;
+        .starfield {
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(2px 2px at 15% 30%, rgba(255,255,255,0.2), transparent);
+            background-size: 200px 200px;
+            pointer-events: none;
+            z-index: -15;
         }
         @keyframes cosmicDrift {
             0% { transform: translate(0, 0) scale(1); }
             100% { transform: translate(5%, 8%) scale(1.15); }
         }
-        .starfield {
-            position: fixed;
-            inset: 0;
-            background-image: 
-                radial-gradient(2px 2px at 15% 30%, rgba(255,255,255,0.2), transparent),
-                radial-gradient(1px 1px at 72% 18%, rgba(255,215,0,0.3), transparent),
-                radial-gradient(1.5px 1.5px at 45% 85%, rgba(255,255,255,0.15), transparent);
-            background-size: 200px 200px, 150px 150px, 180px 180px;
-            background-repeat: repeat;
-            pointer-events: none;
-            z-index: -15;
-        }
 
-        /* ---------- GLASS HEADER (PREMIUM) ---------- */
+        /* Header */
         .premium-header {
             position: fixed;
             top: 0;
@@ -128,7 +93,6 @@
             border-bottom: 1px solid rgba(255, 215, 0, 0.25);
             z-index: 200;
             padding: 0.9rem 2rem;
-            transition: all 0.3s;
         }
         .header-container {
             max-width: 1440px;
@@ -139,11 +103,6 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .brand-identity {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-        }
         .brand-pill {
             background: rgba(26, 115, 232, 0.2);
             backdrop-filter: blur(8px);
@@ -153,19 +112,10 @@
             align-items: center;
             gap: 0.75rem;
             border: 0.5px solid rgba(255, 215, 0, 0.4);
-            transition: all 0.3s;
-        }
-        .brand-pill:hover {
-            border-color: var(--gold-primary);
-            background: rgba(26, 115, 232, 0.3);
         }
         .rpsg-logo {
             height: 36px;
             filter: brightness(0) invert(1);
-            transition: transform 0.2s;
-        }
-        .brand-pill:hover .rpsg-logo {
-            transform: scale(1.02);
         }
         .playcode-logo-text {
             font-size: 1.6rem;
@@ -174,52 +124,31 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.3px;
         }
         .trust-indicator {
             background: rgba(0, 0, 0, 0.5);
             border-radius: 60px;
             padding: 0.4rem 1.2rem;
             font-size: 0.75rem;
-            font-weight: 500;
             color: var(--gold-primary);
             border: 0.5px solid rgba(255, 215, 0, 0.35);
-            backdrop-filter: blur(4px);
-        }
-        .header-right-badge {
-            display: flex;
-            gap: 0.8rem;
-            align-items: center;
-        }
-        .security-badge {
-            font-size: 0.7rem;
-            background: rgba(255,255,255,0.05);
-            padding: 0.3rem 1rem;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
-        /* ---------- MAIN LAYOUT ---------- */
+        /* Main Content */
+        .main-content-wrapper {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        .main-content-wrapper.visible {
+            opacity: 1;
+            visibility: visible;
+        }
         .main-container {
             max-width: 1440px;
             margin: 0 auto;
             padding: 7rem 2rem 4rem;
         }
-
-        /* scroll reveal */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.9s var(--ease-smooth), transform 0.9s var(--ease-smooth);
-        }
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* hero section */
         .hero-section {
             text-align: center;
             margin-bottom: 5rem;
@@ -234,14 +163,11 @@
             padding: 0.7rem 1.8rem;
             margin-bottom: 2rem;
             border: 1px solid rgba(255, 215, 0, 0.35);
-            font-weight: 500;
-            font-size: 0.9rem;
         }
         .hero-title {
             font-size: 4.2rem;
             font-weight: 900;
             line-height: 1.15;
-            letter-spacing: -0.02em;
             background: linear-gradient(145deg, #FFFFFF, #E0E7FF, #FFE5A3);
             -webkit-background-clip: text;
             background-clip: text;
@@ -259,10 +185,9 @@
             color: var(--text-stardust);
             max-width: 680px;
             margin: 0 auto;
-            line-height: 1.6;
         }
 
-        /* ---------- PREMIUM CARDS (CIRCLE ICON FOCUS) ---------- */
+        /* Service Cards */
         .services-prestige {
             display: flex;
             flex-wrap: wrap;
@@ -283,42 +208,22 @@
             transition: all 0.5s var(--ease-spring);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: var(--shadow-2xl);
-            position: relative;
-            isolation: isolate;
-        }
-        .prestige-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 3rem;
-            padding: 1px;
-            background: linear-gradient(135deg, transparent, rgba(255,215,0,0.2), transparent);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
             pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.4s;
+            opacity: 0.6;
         }
-        .prestige-card:hover::before {
+        .prestige-card.enabled {
+            pointer-events: auto;
             opacity: 1;
         }
         .prestige-card:hover {
             transform: translateY(-14px) scale(1.02);
             border-color: rgba(255, 215, 0, 0.5);
             background: rgba(20, 28, 48, 0.85);
-            box-shadow: 0 35px 55px -20px black, 0 0 0 1px rgba(255,215,0,0.3);
         }
-        /* gold variant */
         .prestige-card.gold-master {
             background: linear-gradient(145deg, rgba(45, 38, 22, 0.85), rgba(28, 23, 12, 0.95));
             border: 1px solid rgba(255, 215, 0, 0.7);
             box-shadow: 0 0 28px rgba(255, 215, 0, 0.3);
-        }
-        .prestige-card.gold-master .icon-orbit {
-            background: radial-gradient(circle at 30% 30%, rgba(255,215,0,0.3), rgba(0,0,0,0.3));
-            box-shadow: 0 0 20px rgba(255,215,0,0.6);
         }
         .icon-orbit {
             width: 130px;
@@ -329,27 +234,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.4s var(--ease-spring);
             border: 1px solid rgba(255,215,0,0.5);
-        }
-        .prestige-card:hover .icon-orbit {
-            transform: scale(1.08);
-            border-color: var(--gold-primary);
-            box-shadow: 0 0 28px rgba(255,215,0,0.4);
         }
         .icon-orbit .material-icons-round {
             font-size: 4.2rem;
             color: #FFDE8A;
-            filter: drop-shadow(0 0 12px rgba(255,215,0,0.7));
-        }
-        .gold-master .icon-orbit .material-icons-round {
-            text-shadow: 0 0 15px gold;
         }
         .card-name {
             font-size: 2rem;
             font-weight: 800;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.3px;
         }
         .gold-master .card-name {
             background: linear-gradient(135deg, #FFE484, #FFB347);
@@ -359,8 +253,6 @@
         }
         .card-micro {
             display: inline-flex;
-            align-items: center;
-            gap: 6px;
             background: rgba(255,215,0,0.12);
             border-radius: 60px;
             padding: 0.35rem 1.2rem;
@@ -375,29 +267,17 @@
             align-items: center;
             gap: 0.6rem;
             font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-nebula);
-            transition: all 0.25s;
+            color: #94A3B8;
         }
-        .prestige-card:hover .card-cta-hint {
-            color: var(--gold-primary);
-            gap: 1rem;
-        }
-
-        /* feature stats row */
         .stats-row {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 2rem;
-            margin: 3rem 0 2rem;
+            margin: 3rem 0;
             padding: 2rem 0;
             border-top: 1px solid rgba(255,215,0,0.15);
             border-bottom: 1px solid rgba(255,215,0,0.15);
-        }
-        .stat-item {
-            text-align: center;
-            min-width: 140px;
         }
         .stat-number {
             font-size: 2rem;
@@ -409,11 +289,181 @@
         }
         .stat-label {
             font-size: 0.75rem;
-            color: var(--text-nebula);
+            color: #94A3B8;
             margin-top: 0.3rem;
         }
+        .premium-footer {
+            margin-top: 5rem;
+            padding: 2.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,215,0,0.12);
+        }
+        .copyright {
+            font-size: 0.7rem;
+            color: #5b6a8c;
+        }
 
-        /* ---------- PREMIUM LOADER (FULLSCREEN CINEMATIC) ---------- */
+        /* AD Overlay Styles */
+        .ad-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .ad-video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+        .ad-video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+        }
+        .ad-close-btn {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            color: white;
+            border: 1px solid rgba(255, 215, 0, 0.6);
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 10001;
+            font-family: inherit;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .ad-close-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .ad-close-btn:hover {
+            background: rgba(255, 215, 0, 0.9);
+            color: #000;
+            transform: scale(1.02);
+        }
+        .ad-timer {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #FFD700;
+            border: 1px solid rgba(255,215,0,0.4);
+            z-index: 10001;
+        }
+        .ad-watch-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(16px);
+            padding: 20px 40px;
+            border-radius: 60px;
+            text-align: center;
+            z-index: 10002;
+            border: 2px solid #FFD700;
+            box-shadow: 0 0 50px rgba(255,215,0,0.3);
+            white-space: nowrap;
+        }
+        .ad-watch-message .material-icons-round {
+            font-size: 48px;
+            color: #FFD700;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .ad-watch-message p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+        }
+        .ad-watch-message small {
+            font-size: 0.8rem;
+            color: #FFD700;
+        }
+        .ad-watch-message button {
+            margin-top: 15px;
+            background: #FFD700;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #000;
+        }
+        .ad-skip-note {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(0,0,0,0.5);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #aaa;
+            z-index: 10001;
+        }
+        .ad-volume-btn {
+            position: absolute;
+            bottom: 30px;
+            left: 120px;
+            background: rgba(0,0,0,0.7);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 10001;
+        }
+        .ad-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FFD700;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 20px;
+            border-radius: 30px;
+            z-index: 10002;
+        }
+
+        /* Loader */
         .cinematic-loader {
             position: fixed;
             inset: 0;
@@ -425,34 +475,24 @@
             justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.6s var(--ease-smooth), visibility 0s linear 0.6s;
+            transition: opacity 0.6s ease;
         }
         .cinematic-loader.active {
             opacity: 1;
             visibility: visible;
-            transition: opacity 0.6s var(--ease-smooth), visibility 0s;
-        }
-        .loader-pod {
-            text-align: center;
-            transform: scale(0.9);
-            transition: transform 0.7s var(--ease-spring);
-        }
-        .cinematic-loader.active .loader-pod {
-            transform: scale(1);
         }
         .pulsar-ring {
             width: 180px;
             height: 180px;
-            margin: 0 auto 2rem;
+            margin: 0 auto;
             background: radial-gradient(circle, rgba(255,215,0,0.5), rgba(26,115,232,0.2));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: pulsarGlow 1.2s infinite alternate;
-            box-shadow: 0 0 60px rgba(255,215,0,0.7);
+            animation: pulseGlow 1.2s infinite alternate;
         }
-        @keyframes pulsarGlow {
+        @keyframes pulseGlow {
             0% { box-shadow: 0 0 15px rgba(255,215,0,0.4); transform: scale(1);}
             100% { box-shadow: 0 0 70px rgba(255,215,0,0.9); transform: scale(1.06);}
         }
@@ -464,79 +504,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(12px);
         }
         .loader-icon-dynamic {
             font-size: 5rem;
             color: #FFD966;
-            animation: iconSpinIn 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.2);
-        }
-        @keyframes iconSpinIn {
-            0% { opacity: 0; transform: rotate(-200deg) scale(0.3);}
-            100% { opacity: 1; transform: rotate(0deg) scale(1);}
         }
         .loader-title-main {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
+            text-align: center;
+            margin-top: 1rem;
             background: linear-gradient(120deg, #fff, var(--gold-primary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin: 1rem 0 0.3rem;
-        }
-        .loader-subtle {
-            color: #9aa9c7;
-            font-size: 0.9rem;
-            letter-spacing: 0.3px;
-        }
-        .loader-progress {
-            width: 240px;
-            height: 3px;
-            background: rgba(255,215,0,0.25);
-            margin: 1.5rem auto 0;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        .loader-progress-fill {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #FFD700, #FDB931);
-            transition: width 3s linear;
-        }
-
-        /* footer */
-        .premium-footer {
-            margin-top: 5rem;
-            padding: 2.5rem 2rem;
-            border-top: 1px solid rgba(255,215,0,0.12);
-            text-align: center;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.2rem;
-            flex-wrap: wrap;
-        }
-        .footer-links span {
-            font-size: 0.7rem;
-            color: var(--text-nebula);
-            cursor: default;
-        }
-        .copyright {
-            font-size: 0.7rem;
-            color: #5b6a8c;
         }
 
         @media (max-width: 800px) {
-            .hero-title { font-size: 2.8rem; }
-            .prestige-card { min-width: 260px; }
+            .hero-title { font-size: 2.5rem; }
             .icon-orbit { width: 100px; height: 100px; }
             .icon-orbit .material-icons-round { font-size: 3rem; }
-            .card-name { font-size: 1.6rem; }
-        }
-        @media (max-width: 600px) {
-            .main-container { padding: 6rem 1rem 2rem; }
+            .ad-watch-message { white-space: normal; width: 80%; padding: 15px 25px; }
+            .ad-watch-message p { font-size: 1rem; }
         }
     </style>
 </head>
@@ -545,233 +534,418 @@
 <div class="cosmic-backdrop">
     <div class="nebula-1"></div>
     <div class="nebula-2"></div>
-    <div class="nebula-3"></div>
-    <div class="nebula-4"></div>
 </div>
 <div class="starfield"></div>
 
 <header class="premium-header">
     <div class="header-container">
-        <div class="brand-identity">
-            <div class="brand-pill">
-                <img src="https://i.ibb.co/DPNCP8SJ/RP-Sanjiv-Goenka-Group-logo.webp" alt="RPSG" class="rpsg-logo">
-                <span class="playcode-logo-text">PlayCode</span>
-            </div>
-            <div class="trust-indicator">✦ India • ✦</div>
+        <div class="brand-pill">
+            <img src="https://i.ibb.co/DPNCP8SJ/RP-Sanjiv-Goenka-Group-logo.webp" alt="RPSG" class="rpsg-logo">
+            <span class="playcode-logo-text">Playcode</span>
         </div>
-        <div class="header-right-badge">
-            <div class="security-badge">
-                <span class="material-icons-round" style="font-size: 14px;">verified</span> Google Partner
-            </div>
-        </div>
+        <div class="trust-indicator">✦ India ✦</div>
     </div>
 </header>
 
-<main class="main-container">
-    <div class="hero-section scroll-reveal" id="heroReveal">
-        <div class="hero-badge">
-            <span class="material-icons-round">auto_awesome</span>
-            Google + RPSG | Playcode
-        </div>
-        <h1 class="hero-title">
-            Elevate to <span class="hero-title-accent">Premium Service</span><br>
-            one refined gesture
-        </h1>
-        <p class="hero-description">
-            Experience the convergence of secure Google Play services, instant Redeem Code, and exclusive gold membership rewards. 
+<div class="main-content-wrapper" id="mainContentWrapper">
+    <main class="main-container">
+        <div class="hero-section">
+            <div class="hero-badge">
+                <span class="material-icons-round">auto_awesome</span>
+                Google + RPSG | Playcode
+            </div>
+            <h1 class="hero-title">
+                Elevate to <span class="hero-title-accent">Premium Service</span><br>
+                one refined gesture
+            </h1>
+            <p class="hero-description">
+                Experience the convergence of secure Google Play services, instant Redeem Code, and exclusive gold membership rewards. 
             Select your portal — each sphere is a gateway to excellence.
-        </p>
-    </div>
+            </p>
+        </div>
 
-    <!-- THREE PREMIUM CARDS: only circle icons + minimal info -->
-    <div class="services-prestige">
-        <!-- Card 1: Account Core -->
-        <div class="prestige-card" data-url="https://playcodeindia.github.io/Balance/" data-service="core">
-            <div class="icon-orbit">
-                <span class="material-icons-round">account_balance_wallet</span>
+        <div class="services-prestige">
+            <div class="prestige-card" data-url="https://playcodeindia.github.io/Balance/" data-service="core">
+                <div class="icon-orbit"><span class="material-icons-round">account_balance_wallet</span></div>
+                <div class="card-name">Your Playcode Account</div>
+                <div class="card-micro">⚡ instant balance • secure vault</div>
+                <div class="card-cta-hint"><span>access portal</span><span class="material-icons-round">east</span></div>
             </div>
-            <div class="card-name">Your Playcode Account</div>
-            <div class="card-micro">⚡ instant balance • secure vault</div>
-            <div class="card-cta-hint">
-                <span>access portal</span>
-                <span class="material-icons-round" style="font-size: 14px;">east</span>
+            <div class="prestige-card" data-url="https://playcodeindia.github.io/Loans/" data-service="loan">
+                <div class="icon-orbit"><span class="material-icons-round">account_balance</span></div>
+                <div class="card-name">Instant Loans</div>
+                <div class="card-micro">⚡ instant credit • flex tenure</div>
+                <div class="card-cta-hint"><span>apply now</span><span class="material-icons-round">east</span></div>
+            </div>
+            <div class="prestige-card gold-master" data-url="https://playcodeindia.github.io/Playcodegold/" data-service="pro">
+                <div class="icon-orbit"><span class="material-icons-round">workspace_premium</span></div>
+                <div class="card-name">Playcode Pro</div>
+                <div class="card-micro">✨ GOLD · FREE till 8 Apr ✨ 20% off</div>
+                <div class="card-cta-hint"><span style="color:#FFD966;">unlock gold tier</span><span class="material-icons-round">auto_awesome</span></div>
             </div>
         </div>
 
-        <!-- Card 2: Loan Edge -->
-        <div class="prestige-card" data-url="https://playcodeindia.github.io/Loans/" data-service="loan">
-            <div class="icon-orbit">
-                <span class="material-icons-round">account_balance</span>
-            </div>
-            <div class="card-name">Instant Loans</div>
-            <div class="card-micro">⚡ instant credit • flex tenure</div>
-            <div class="card-cta-hint">
-                <span>apply now</span>
-                <span class="material-icons-round" style="font-size: 14px;">east</span>
-            </div>
+        <div class="stats-row">
+            <div><div class="stat-number">52K+</div><div class="stat-label">Active Users</div></div>
+            <div><div class="stat-number">₹2.8Cr+</div><div class="stat-label">Loans Disbursed</div></div>
+            <div><div class="stat-number">24/7</div><div class="stat-label">Support</div></div>
+            <div><div class="stat-number">4.5★</div><div class="stat-label">Rating</div></div>
         </div>
 
-        <!-- Card 3: Gold Pro (premium) -->
-        <div class="prestige-card gold-master" data-url="https://playcodeindia.github.io/Playcodegold/" data-service="pro">
-            <div class="icon-orbit">
-                <span class="material-icons-round">workspace_premium</span>
-            </div>
-            <div class="card-name">Playcode Pro</div>
-            <div class="card-micro">✨ GOLD · FREE till 8 Apr ✨ 20% off + rewards</div>
-            <div class="card-cta-hint">
-                <span style="color:#FFD966;">unlock gold tier</span>
-                <span class="material-icons-round" style="font-size: 14px;">auto_awesome</span>
-            </div>
-        </div>
-    </div>
+        <footer class="premium-footer">
+            <div class="copyright">© 2022-2026 RPSG — PlayCode India. Google Play is a trademark of Google LLC. All rights reserved.</div>
+        </footer>
+    </main>
+</div>
 
-    <!-- trust stats -->
-    <div class="stats-row scroll-reveal">
-        <div class="stat-item"><div class="stat-number">52K+</div><div class="stat-label">Active Users</div></div>
-        <div class="stat-item"><div class="stat-number">₹2.8Cr+</div><div class="stat-label">Loans Disbursed</div></div>
-        <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Premium Support</div></div>
-        <div class="stat-item"><div class="stat-number">4.5★</div><div class="stat-label">User Rating</div></div>
-    </div>
-
-    <footer class="premium-footer">
-        <div class="footer-links">
-            <span>Security & Privacy</span>
-            <span>Terms of Service</span>
-            <span>RPSG Playcode</span>
-            <span>Google Play</span>
-        </div>
-        <div class="copyright">© 2022-2026 RPSG — PlayCode India. Google Play is a trademark of Google LLC. All rights reserved.</div>
-    </footer>
-</main>
-
-<!-- cinematic loader overlay -->
-<div id="cinematicLoader" class="cinematic-loader">
-    <div class="loader-pod">
-        <div class="pulsar-ring">
-            <div class="core-icon">
-                <span class="material-icons-round loader-icon-dynamic" id="loaderIconDynamic">stars</span>
-            </div>
-        </div>
-        <div class="loader-title-main" id="loaderTitleDynamic">Authenticating</div>
-        <div class="loader-subtle" id="loaderDescDynamic">establishing secure corridor</div>
-        <div class="loader-progress">
-            <div class="loader-progress-fill" id="loaderProgressFill"></div>
-        </div>
+<div class="cinematic-loader" id="cinematicLoader">
+    <div>
+        <div class="pulsar-ring"><div class="core-icon"><span class="material-icons-round loader-icon-dynamic">stars</span></div></div>
+        <div class="loader-title-main" id="loaderTitleDynamic">Processing</div>
     </div>
 </div>
 
 <script>
     (function() {
-        // ========== SCROLL REVEAL (SMOOTH) ==========
-        const revealElements = document.querySelectorAll('.scroll-reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // force initial check for elements visible on load
-        window.addEventListener('load', () => {
-            revealElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 80) el.classList.add('revealed');
-            });
-        });
-
-        // ========== PREMIUM LOADER WITH 3 SEC DELAY & DYNAMIC CONTENT ==========
+        // ========== AD SYSTEM WITH VIDEO PLAY CHECK ==========
+        let isOpeningAdCompleted = false;
+        let isSecondAdPlaying = false;
+        let pendingRedirectUrl = null;
+        let redirectTimer = null;
+        let timerStarted = false;
+        let currentTimerInterval = null;
+        
+        const mainWrapper = document.getElementById('mainContentWrapper');
         const loaderOverlay = document.getElementById('cinematicLoader');
-        const loaderIconSpan = document.getElementById('loaderIconDynamic');
-        const loaderTitleSpan = document.getElementById('loaderTitleDynamic');
-        const loaderDescSpan = document.getElementById('loaderDescDynamic');
-        const progressFill = document.getElementById('loaderProgressFill');
-        
-        let activeTimer = null;
-        let pendingRedirect = '';
-
-        const serviceMapping = {
-            core: { icon: 'account_balance_wallet', title: 'Playcode Core Vault', desc: 'syncing secure credentials & balance' },
-            loan: { icon: 'account_balance', title: 'Liquidity Bridge', desc: 'AI eligibility & instant approval' },
-            pro: { icon: 'workspace_premium', title: 'GOLD ASCENSION', desc: 'unlocking premium rewards & exclusive perks' }
-        };
-
-        function getServiceType(card) {
-            if (card.classList.contains('gold-master')) return 'pro';
-            const url = card.getAttribute('data-url') || '';
-            if (url.includes('Balance')) return 'core';
-            if (url.includes('Loans')) return 'loan';
-            if (url.includes('Playcodegold')) return 'pro';
-            return 'core';
-        }
-
-        function startLoaderAndRedirect(url, cardElement) {
-            if (activeTimer) return;
-            const type = getServiceType(cardElement);
-            const config = serviceMapping[type] || serviceMapping.core;
-            
-            loaderIconSpan.innerText = config.icon;
-            loaderTitleSpan.innerText = config.title;
-            loaderDescSpan.innerText = config.desc;
-            
-            progressFill.style.width = '0%';
-            void progressFill.offsetWidth;
-            
-            loaderOverlay.classList.add('active');
-            
-            setTimeout(() => {
-                if (loaderOverlay.classList.contains('active')) {
-                    progressFill.style.width = '100%';
-                }
-            }, 30);
-            
-            pendingRedirect = url;
-            activeTimer = setTimeout(() => {
-                if (pendingRedirect) {
-                    window.location.href = pendingRedirect;
-                }
-                cleanupTimer();
-            }, 3000);
-        }
-        
-        function cleanupTimer() {
-            if (activeTimer) {
-                clearTimeout(activeTimer);
-                activeTimer = null;
-            }
-            pendingRedirect = '';
-        }
-        
-        // attach click events to cards
         const cards = document.querySelectorAll('.prestige-card');
-        cards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if (activeTimer) return;
-                const targetUrl = card.getAttribute('data-url');
-                if (!targetUrl) return;
-                // micro interaction feedback
-                card.style.transform = 'scale(0.97)';
-                setTimeout(() => { if(card) card.style.transform = ''; }, 120);
-                startLoaderAndRedirect(targetUrl, card);
-            });
-            card.setAttribute('role', 'button');
-            card.setAttribute('tabindex', '0');
-            card.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    card.click();
+        
+        // Disable cards initially
+        cards.forEach(card => card.classList.remove('enabled'));
+        
+        // Function to start timer only after video plays
+        function startTimerAfterPlay(videoElement, durationSec, timerDiv, closeBtn, onComplete) {
+            let timeLeft = durationSec;
+            let isCompleted = false;
+            
+            const updateTimer = () => {
+                timerDiv.innerHTML = `<span>${Math.ceil(timeLeft)}</span> sec remaining`;
+                if (timeLeft <= 0 && !isCompleted) {
+                    if (currentTimerInterval) clearInterval(currentTimerInterval);
+                    isCompleted = true;
+                    timerStarted = false;
+                    closeBtn.classList.add('visible');
+                }
+            };
+            
+            const startCountdown = () => {
+                if (timerStarted) return;
+                timerStarted = true;
+                console.log('Video playing, timer started!');
+                updateTimer();
+                currentTimerInterval = setInterval(() => {
+                    if (timeLeft > 0 && !isCompleted) {
+                        timeLeft -= 1;
+                        updateTimer();
+                    } else if (timeLeft <= 0 && !isCompleted) {
+                        if (currentTimerInterval) clearInterval(currentTimerInterval);
+                        isCompleted = true;
+                        timerStarted = false;
+                        closeBtn.classList.add('visible');
+                    }
+                }, 1000);
+            };
+            
+            // Check if video is already playing
+            if (!videoElement.paused && !videoElement.ended && videoElement.readyState > 2) {
+                startCountdown();
+            }
+            
+            // Listen for play event
+            videoElement.addEventListener('play', startCountdown, { once: true });
+            
+            // Also check when video can play
+            videoElement.addEventListener('canplay', () => {
+                if (!videoElement.paused && !timerStarted) {
+                    startCountdown();
                 }
             });
-        });
+            
+            // Handle video end
+            videoElement.addEventListener('ended', () => {
+                if (timeLeft > 0) timeLeft = 0;
+                updateTimer();
+                if (currentTimerInterval) clearInterval(currentTimerInterval);
+                timerStarted = false;
+                closeBtn.classList.add('visible');
+            });
+            
+            return () => {
+                if (currentTimerInterval) clearInterval(currentTimerInterval);
+                videoElement.removeEventListener('play', startCountdown);
+            };
+        }
         
-        // prevent loader dismissal on background click (immersive)
-        loaderOverlay.addEventListener('click', (e) => e.stopPropagation());
+        // Create ad overlay with watch message
+        function createAdOverlay(videoSrc, durationSec, onComplete, showCloseAfterDuration = true) {
+            const existingOverlay = document.querySelector('.ad-overlay');
+            if (existingOverlay) existingOverlay.remove();
+            
+            const overlay = document.createElement('div');
+            overlay.className = 'ad-overlay';
+            
+            const container = document.createElement('div');
+            container.className = 'ad-video-container';
+            
+            const video = document.createElement('video');
+            video.className = 'ad-video';
+            video.src = videoSrc;
+            video.muted = false;
+            video.playsInline = true;
+            video.setAttribute('playsinline', 'true');
+            video.setAttribute('webkit-playsinline', 'true');
+            video.loop = false;
+            video.preload = 'auto';
+            
+            // Watch message overlay (shows until video plays)
+            const watchMessage = document.createElement('div');
+            watchMessage.className = 'ad-watch-message';
+            watchMessage.innerHTML = `
+                <span class="material-icons-round">play_circle_filled</span>
+                <p>🎬 Watch ad to access content</p>
+                <small>Please wait for video to start playing</small>
+                <button id="playAdBtn">▶ Play Advertisement</button>
+            `;
+            
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'ad-loading';
+            loadingDiv.innerHTML = '<span class="material-icons-round">hourglass_top</span> Loading video...';
+            loadingDiv.style.display = 'none';
+            
+            // Timer display
+            const timerDiv = document.createElement('div');
+            timerDiv.className = 'ad-timer';
+            timerDiv.innerHTML = `⏱️ Wait for video to play...`;
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'ad-close-btn';
+            closeBtn.innerHTML = '<span class="material-icons-round">close</span> Continue';
+            
+            const skipNote = document.createElement('div');
+            skipNote.className = 'ad-skip-note';
+            skipNote.innerHTML = 'Advertisement • Watch to unlock content';
+            
+            const volumeBtn = document.createElement('button');
+            volumeBtn.className = 'ad-volume-btn';
+            volumeBtn.innerHTML = '<span class="material-icons-round">volume_up</span>';
+            let isMuted = false;
+            volumeBtn.onclick = () => {
+                video.muted = !isMuted;
+                isMuted = !isMuted;
+                volumeBtn.innerHTML = isMuted ? '<span class="material-icons-round">volume_off</span>' : '<span class="material-icons-round">volume_up</span>';
+            };
+            
+            container.appendChild(video);
+            overlay.appendChild(container);
+            overlay.appendChild(timerDiv);
+            overlay.appendChild(skipNote);
+            overlay.appendChild(closeBtn);
+            overlay.appendChild(volumeBtn);
+            overlay.appendChild(watchMessage);
+            document.body.appendChild(overlay);
+            
+            let cleanupTimer = null;
+            let isCompleted = false;
+            
+            const onCompleteAndClean = () => {
+                if (isCompleted) return;
+                isCompleted = true;
+                if (cleanupTimer) cleanupTimer();
+                if (currentTimerInterval) clearInterval(currentTimerInterval);
+                video.pause();
+                video.src = '';
+                overlay.remove();
+                if (onComplete) onComplete();
+            };
+            
+            // Play button handler
+            const playBtn = document.getElementById('playAdBtn');
+            if (playBtn) {
+                playBtn.onclick = () => {
+                    watchMessage.style.display = 'none';
+                    loadingDiv.style.display = 'block';
+                    container.appendChild(loadingDiv);
+                    
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            loadingDiv.style.display = 'none';
+                            loadingDiv.remove();
+                            console.log('Video playing successfully');
+                        }).catch(error => {
+                            console.log('Play failed:', error);
+                            loadingDiv.innerHTML = '⚠️ Click to play video';
+                            loadingDiv.style.cursor = 'pointer';
+                            loadingDiv.onclick = () => {
+                                video.play();
+                                loadingDiv.remove();
+                            };
+                        });
+                    }
+                };
+            }
+            
+            // Video error handling
+            video.onerror = () => {
+                console.error(`Video failed to load: ${videoSrc}`);
+                watchMessage.innerHTML = `
+                    <span class="material-icons-round">error</span>
+                    <p>⚠️ Video file not found: ${videoSrc}</p>
+                    <small>Click to continue without ad</small>
+                    <button id="continueBtn">Continue to Site</button>
+                `;
+                const continueBtn = document.getElementById('continueBtn');
+                if (continueBtn) {
+                    continueBtn.onclick = () => {
+                        onCompleteAndClean();
+                    };
+                }
+            };
+            
+            // When video can play
+            video.oncanplay = () => {
+                if (loadingDiv.parentNode) loadingDiv.remove();
+                // Start timer once video plays
+                cleanupTimer = startTimerAfterPlay(video, durationSec, timerDiv, closeBtn, onCompleteAndClean);
+            };
+            
+            // Close button handler
+            closeBtn.addEventListener('click', () => {
+                if (timerDiv.innerHTML.includes('sec remaining') && !timerDiv.innerHTML.includes('Wait')) {
+                    onCompleteAndClean();
+                }
+            });
+            
+            return overlay;
+        }
         
-        // body scroll lock while loader active
+        // Random duration: 30s (70%), 45s (20%), 60s (10%)
+        function getRandomOpeningDuration() {
+            const rand = Math.random() * 100;
+            if (rand < 70) return 30;
+            if (rand < 90) return 45;
+            return 60;
+        }
+        
+        // Show opening ad
+        function showOpeningAd() {
+            const duration = getRandomOpeningDuration();
+            console.log(`Opening ad duration: ${duration} seconds - playing AD69.mp4`);
+            
+            createAdOverlay('AD69.mp4', duration, () => {
+                isOpeningAdCompleted = true;
+                mainWrapper.classList.add('visible');
+                // Enable all cards
+                cards.forEach(card => card.classList.add('enabled'));
+                initScrollReveal();
+            }, true);
+        }
+        
+        // Show second ad (30 seconds)
+        function showSecondAd(callback) {
+            if (isSecondAdPlaying) return;
+            isSecondAdPlaying = true;
+            
+            console.log('Playing second ad: AD70.mp4 (30 seconds)');
+            createAdOverlay('AD70.mp4', 30, () => {
+                isSecondAdPlaying = false;
+                if (callback) callback();
+            }, true);
+        }
+        
+        // Scroll reveal
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.hero-section, .stats-row').forEach(el => {
+                el.classList.add('scroll-reveal');
+                observer.observe(el);
+            });
+        }
+        
+        // Handle service clicks
+        function handleServiceClick(url, cardElement) {
+            if (!isOpeningAdCompleted) {
+                console.log('Please watch the opening ad first');
+                return;
+            }
+            if (isSecondAdPlaying) return;
+            
+            pendingRedirectUrl = url;
+            
+            showSecondAd(() => {
+                if (pendingRedirectUrl) {
+                    loaderOverlay.classList.add('active');
+                    
+                    const iconSpan = document.querySelector('.loader-icon-dynamic');
+                    const titleSpan = document.getElementById('loaderTitleDynamic');
+                    if (cardElement.classList.contains('gold-master')) {
+                        if (iconSpan) iconSpan.innerText = 'workspace_premium';
+                        if (titleSpan) titleSpan.innerText = 'GOLD ASCENSION';
+                    } else if (cardElement.getAttribute('data-service') === 'core') {
+                        if (iconSpan) iconSpan.innerText = 'account_balance_wallet';
+                        if (titleSpan) titleSpan.innerText = 'Playcode Core Vault';
+                    } else {
+                        if (iconSpan) iconSpan.innerText = 'account_balance';
+                        if (titleSpan) titleSpan.innerText = 'Liquidity Bridge';
+                    }
+                    
+                    redirectTimer = setTimeout(() => {
+                        window.location.href = pendingRedirectUrl;
+                    }, 2000);
+                }
+            });
+        }
+        
+        // Attach click events
+        function attachCardEvents() {
+            cards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (!isOpeningAdCompleted) return;
+                    if (!card.classList.contains('enabled')) return;
+                    
+                    const targetUrl = card.getAttribute('data-url');
+                    if (!targetUrl) return;
+                    
+                    card.style.transform = 'scale(0.97)';
+                    setTimeout(() => { if(card) card.style.transform = ''; }, 120);
+                    handleServiceClick(targetUrl, card);
+                });
+                
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        card.click();
+                    }
+                });
+            });
+        }
+        
+        // Initialize
+        mainWrapper.classList.remove('visible');
+        attachCardEvents();
+        showOpeningAd();
+        
+        // Body scroll lock during loader
         const observerBody = new MutationObserver((mutations) => {
             mutations.forEach((mut) => {
                 if (mut.attributeName === 'class') {
@@ -785,10 +959,10 @@
         });
         observerBody.observe(loaderOverlay, { attributes: true });
         
-        // 3D tilt effect on cards for extra premium feel
+        // 3D tilt effect
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
-                if (activeTimer) return;
+                if (!card.classList.contains('enabled')) return;
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
@@ -803,7 +977,10 @@
             });
         });
         
-        console.log('PlayCode Premium Nexus — smooth scroll, cinematic loader, professional interface');
+        console.log('PlayCode Ad System Ready');
+        console.log('Timer starts ONLY after video begins playing');
+        console.log('Required files: AD69.mp4 and AD70.mp4 in same folder');
+        console.log('Click "Play Advertisement" button to start video and timer');
     })();
 </script>
 </body>
